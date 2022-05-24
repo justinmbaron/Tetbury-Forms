@@ -1,5 +1,5 @@
 # This program creates Tetbury forms and includes GP and Insurance details
-# V1 Runs on Justin's PC
+# V1 Runs on Alisons PC
 #
 # V1.1 01/04/2022
 # Update to reflect the changes made by WriteUpp in the export activities and file (NHS number
