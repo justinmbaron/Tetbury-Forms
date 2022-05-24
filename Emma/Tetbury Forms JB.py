@@ -7,6 +7,9 @@
 #v1.2 16/05/2022
 # Change in time field to refelct WritrUpp change
 
+#v1.2a 24/5/22
+#Only changes to make it work on Alison's PC
+
 import os
 import openpyxl
 import csv
@@ -192,18 +195,21 @@ def setup_folder():
         os.mkdir(this_dir)
     return
 
-version_no = "1.2 JB 16/05/2022"
+version_no = "1.2a Alison 24/05/2022"
 writeUppURL = 'https://dr-emma-howard-dermatology.writeupp.com/'
-driverPath = 'C:/Users/Justin Baron/Desktop/Clinics/geckodriver.exe'
+#driverPath = 'C:/Users/Justin Baron/Desktop/Clinics/geckodriver.exe'
+driverPath = 'C:/Users/Aliwid/OneDrive/Desktop/Clinics/geckodriver.exe'
 thirdURL = writeUppURL + '/admin/thirdparties.aspx'
 loginURL = 'https://portal.writeupp.com/login'
 patientsURL = writeUppURL + '/admin/data-management/patients.aspx'
 activityURL = writeUppURL + '/contactsbydate.aspx'
 patientsByInsurer = writeUppURL + '/patientsbythirdparty.aspx'
-userName = 'juliakirkwood@live.co.uk'
-password = 'Entrance.1'
+userName = ''
+password = ''
 testWUID = 'WU1191771'
-wd = 'C:\\Users\\Justin Baron\\Desktop\\Clinics'
+#wd = 'C:\\Users\\Justin Baron\\Desktop\\Clinics'
+wd = 'C:\\Users\\Aliwid\\OneDrive\\Desktop\\Clinics'
+
 HospitalSheetDirectory = wd+'\\New hospital sheets'
 template_file = 'Tetbury Blank.xlsx'
 downloadDirectory = wd
