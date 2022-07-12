@@ -7,6 +7,10 @@
 #v1.2 16/05/2022
 # Change in time field to refelct WritrUpp change
 
+#v1.3 11/07/2022
+# Changed xpath as writeupp removed address ID
+# Added General Practitioner
+
 import os
 import openpyxl
 import csv
@@ -72,7 +76,7 @@ def process_patients():
             age_dob = age_dob_field.text
             tp_DOB = age_dob[:9]
             tp_age = age_dob[age_dob.find("(")+1:age_dob.find(")")] #grab text between the brackets
-            tp_address = driver.find_element_by_id('ctl00_ctl00_Content_ContentPlaceHolderPS_dfFullAddress').text
+            tp_address = driver.find_element_by_xpath('/html/body/form/div[5]/div[3]/div/div/div[1]/article[1]/table/tbody/tr[3]/td/p').text
             tp_home_phone = driver.find_element_by_xpath('/html/body/form/div[5]/div[3]/div/div/div[2]/article[1]/table/tbody/tr[1]/td/span/a').text
             tp_mobile = driver.find_element_by_xpath('/html/body/form/div[5]/div[3]/div/div/div[2]/article[1]/table/tbody/tr[3]/td/span/a').text
             #tp_email = driver.find_element_by_xpath('/html/body/form/div[5]/div[3]/div/div/div[2]/article[1]/table/tbody/tr[4]/td/span/a').text
@@ -106,15 +110,15 @@ def process_patients():
                     tp_gp_surgery = third_party_text.replace(tp_gp_name+",","") #remove doctors name
                 else:
                      print('You have found something else')
-            #Check for policy number and autorisation code
-            if thirdparty_attributes != []:
-                # print('something here')
-                for attribute in thirdparty_attributes:
-                    third_party_attribute_text = attribute.text
-                    if "Policy Number" in third_party_attribute_text:
-                        tp_membership_no = third_party_attribute_text.split(':', 1)[1] #get the text after the :
-                    if "Authorisation Code" in third_party_attribute_text:
-                        tp_authorisation = third_party_attribute_text.split(':', 1)[1] #get the text after the :
+        #Check for policy number and autorisation code
+        if thirdparty_attributes != []:
+            # print('something here')
+            for attribute in thirdparty_attributes:
+                third_party_attribute_text = attribute.text
+                if "Policy Number" in third_party_attribute_text:
+                    tp_membership_no = third_party_attribute_text.split(':', 1)[1] #get the text after the :
+                if "Authorisation Code" in third_party_attribute_text:
+                    tp_authorisation = third_party_attribute_text.split(':', 1)[1] #get the text after the :
 
             # Start creating the spreadsheet for this patient
             os.chdir(wd)
@@ -192,7 +196,7 @@ def setup_folder():
         os.mkdir(this_dir)
     return
 
-version_no = "1.2 JB 16/05/2022"
+version_no = "v1.3 JB 11/07/2022"
 writeUppURL = 'https://dr-emma-howard-dermatology.writeupp.com/'
 driverPath = 'C:/Users/Justin Baron/Desktop/Clinics/geckodriver.exe'
 thirdURL = writeUppURL + '/admin/thirdparties.aspx'
@@ -207,7 +211,7 @@ wd = 'C:\\Users\\Justin Baron\\Desktop\\Clinics'
 HospitalSheetDirectory = wd+'\\New hospital sheets'
 template_file = 'Tetbury Blank.xlsx'
 downloadDirectory = wd
-dr_list = ['Doctor','Dr','Dr.','Doctor,','Dr,','Dr.,']
+dr_list = ['Doctor','Dr','Dr.','Doctor,','Dr,','Dr.,','General']
 wu_activity_filename = 'Activity by date.csv'
 activity_filename = 'Activity.csv'
 
