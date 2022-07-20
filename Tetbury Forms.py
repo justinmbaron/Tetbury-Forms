@@ -1,5 +1,5 @@
 # This program creates Tetbury forms and includes GP and Insurance details
-# Runs on Justin computer
+# Runs on Alisons computer
 #
 # V1.1 01/04/2022
 # Update to reflect the changes made by WriteUpp in the export activities and file (NHS number
@@ -201,9 +201,9 @@ def setup_folder():
         os.mkdir(this_dir)
     return
 
-version_no = "v1.4 JB 20/07/2022"
+version_no = "v1.4 AW 20/07/2022"
 writeUppURL = 'https://dr-emma-howard-dermatology.writeupp.com/'
-driverPath = 'C:/Users/Justin Baron/Desktop/Clinics/geckodriver.exe'
+driverPath = 'C:/Users/Aliwid/OneDrive/Desktop/Clinics/geckodriver.exe'
 thirdURL = writeUppURL + '/admin/thirdparties.aspx'
 loginURL = 'https://portal.writeupp.com/login'
 patientsURL = writeUppURL + '/admin/data-management/patients.aspx'
@@ -212,7 +212,7 @@ patientsByInsurer = writeUppURL + '/patientsbythirdparty.aspx'
 userName = 'aliwid5@gmail.com'
 password = 'Melanoma1!'
 testWUID = 'WU1191771'
-wd = 'C:\\Users\\Justin Baron\\Desktop\\Clinics'
+wd = 'C:\\Users\\Aliwid\\OneDrive\\Desktop\\Clinics'
 HospitalSheetDirectory = wd+'\\New hospital sheets'
 template_file = 'Tetbury Blank.xlsx'
 downloadDirectory = wd
